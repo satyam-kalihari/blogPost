@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1 class="mb-4">Blog Article</h1>
-        <a href="/articles/new" class="btn btn-success" >New Article</a>
+        <a href="/articles/newArticle" class="btn btn-success" >New Article</a>
 
         <% articles.forEach(article => { %> 
             <div class="card mt-4">
@@ -19,6 +19,10 @@
                     <h4 class="card-tittle"><%= article.title %></h4>
                     <div class="card-subtittle text-muted mb-2"><%= article.createdAt.toLocaleDateString() %></div>
                     <div class="card-text mb-2"><%= article.description %></div>
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+                    <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger">DELETE</button>
+                    </form>
                 </div>
             </div>
         <% }) %>
